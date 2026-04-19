@@ -1,0 +1,19 @@
+# Entorno virtual
+.venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+
+# Datos
+data/*.xlsx
+
+# Salidas
+output/
+
+# Logs
+logs/
+
+# Config sensible (si aplica)
+.env

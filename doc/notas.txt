@@ -1,0 +1,7 @@
+python -m src.sistema_loteria    ----  ejecutar script
+
+.\.venv\Scripts\Activate.ps1   ------------activar entorno
+
+pip freeze > requirements.txt   ....... guarda dependencias
+
+pip install -r requirements.txt     ---- en otro entorno

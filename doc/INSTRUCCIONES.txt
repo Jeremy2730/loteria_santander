@@ -1,0 +1,134 @@
+=========================================================
+  GUÍA DE INSTALACIÓN — ACTUALIZADOR AUTOMÁTICO
+  LOTERÍA DE SANTANDER EN WINDOWS
+=========================================================
+
+ARCHIVOS INCLUIDOS:
+  • actualizar_loteria.py       → Script principal
+  • ejecutar_actualizacion.bat  → Lanzador (doble clic)
+  • INSTRUCCIONES.txt           → Este archivo
+
+=========================================================
+  PASO 1 — INSTALAR PYTHON (si no lo tienes)
+=========================================================
+
+1. Ve a: https://www.python.org/downloads/
+2. Descarga la versión más reciente (ej. Python 3.12)
+3. Al instalar, MARCA la casilla:
+   ✅ "Add Python to PATH"
+4. Haz clic en "Install Now"
+
+Para verificar: abre CMD y escribe:
+   python --version
+   (debe mostrar algo como "Python 3.12.x")
+
+=========================================================
+  PASO 2 — PREPARAR TUS ARCHIVOS
+=========================================================
+
+1. Crea una carpeta, por ejemplo:
+   C:\LoteriaSantander\
+
+2. Copia dentro de esa carpeta:
+   • actualizar_loteria.py
+   • ejecutar_actualizacion.bat
+   • loteria_santander_v2.xlsx   ← el Excel descargado
+
+3. Abre actualizar_loteria.py con el Bloc de notas
+   y cambia esta línea (línea ~20):
+
+   RUTA_EXCEL = r"C:\LoteriaSantander\loteria_santander_v2.xlsx"
+
+   ⚠️ Asegúrate que la ruta apunte exactamente
+      a donde guardaste tu Excel.
+
+=========================================================
+  PASO 3 — PRUEBA MANUAL
+=========================================================
+
+1. Haz doble clic en ejecutar_actualizacion.bat
+2. Verás una ventana negra con el proceso
+3. Si dice "✅ Resultado agregado" → ¡funcionó!
+4. Si dice "ya está registrado" → el dato ya existía
+5. Revisa log_actualizacion.txt para ver el historial
+
+=========================================================
+  PASO 4 — AUTOMATIZAR CON EL PROGRAMADOR DE TAREAS
+=========================================================
+
+Esto hace que se ejecute SOLO cada viernes a las 11:30 PM
+sin que tengas que hacer nada.
+
+1. Presiona  Windows + S  y busca:
+   "Programador de tareas"  →  Ábrelo
+
+2. En el panel derecho, clic en:
+   "Crear tarea básica..."
+
+3. Nombre:  Loteria Santander Actualizador
+   Descripción: Actualiza el Excel con el nuevo resultado
+   → Clic en Siguiente
+
+4. Desencadenador: Semanalmente
+   → Clic en Siguiente
+
+5. Configuración:
+   • Inicio: elige la fecha del próximo viernes
+   • Hora: 11:30 p.m.
+   • Se repite cada: 1 semana
+   • Día: ✅ Viernes
+   → Clic en Siguiente
+
+6. Acción: Iniciar un programa
+   → Clic en Siguiente
+
+7. Programa o script:
+   C:\LoteriaSantander\ejecutar_actualizacion.bat
+
+   Iniciar en (opcional):
+   C:\LoteriaSantander\
+   → Clic en Siguiente
+
+8. Clic en Finalizar
+
+9. ¡Listo! Cada viernes a las 11:30 PM se ejecutará
+   automáticamente y actualizará tu Excel.
+
+=========================================================
+  CONSEJO EXTRA — ¿Qué pasa si la PC está apagada?
+=========================================================
+
+Si tu PC está apagada el viernes a las 11:30 PM, la
+tarea no correrá. Para solucionarlo:
+
+1. Abre la tarea en el Programador de tareas
+2. Ve a la pestaña "Configuración"
+3. Marca: ✅ "Ejecutar la tarea lo antes posible si
+   se perdió un inicio programado"
+
+Así, la próxima vez que enciendas la PC, se ejecutará
+automáticamente.
+
+=========================================================
+  SOLUCIÓN DE PROBLEMAS
+=========================================================
+
+❌ "Python no está instalado"
+   → Instala Python y marca "Add Python to PATH"
+
+❌ "No se encontró el archivo Excel"
+   → Verifica RUTA_EXCEL en actualizar_loteria.py
+
+❌ "No se pudo obtener el resultado"
+   → El sorteo puede no haberse publicado aún.
+      Intenta de nuevo más tarde o el sábado.
+
+❌ La ventana se abre y cierra muy rápido
+   → Abre CMD, navega a la carpeta y ejecuta:
+      python actualizar_loteria.py
+      Así verás los errores.
+
+Para soporte, revisa siempre:
+   log_actualizacion.txt
+
+=========================================================
