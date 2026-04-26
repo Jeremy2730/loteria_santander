@@ -17,3 +17,5 @@ logs/
 
 # Config sensible (si aplica)
 .env
+
+*.pkl
